@@ -13,16 +13,26 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('accueil');
 
 Route::post('/inscription',[
     'uses'=>'UtilisateurController@postInscription',
     'as'=>'inscription'
 ]);
-
-
-Route::get('/dashboard',[
-    'uses'=>'UtilisateurController@getDashboard',
-    'as'=>'dashboard'
+Route::post('/connexion',[
+    'uses'=>'UtilisateurController@postConnexion',
+    'as'=>'connexion'
 ]);
 
+
+
+Route::group(['middleware' => 'auth'], function () {
+
+
+    Route::get('/dashboard',[
+        'uses'=>'UtilisateurController@getDashboard',
+        'as'=>'dashboard'
+    ]);
+
+
+});

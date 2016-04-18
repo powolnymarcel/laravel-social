@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Utilisateur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 
 class UtilisateurController extends Controller
@@ -30,15 +31,24 @@ class UtilisateurController extends Controller
         $utilisateur->password=$password;
 
         $utilisateur->save();
-
+        Auth::login($utilisateur);
         return redirect()->route('dashboard');
 
     }
 
     public function postConnexion(Request $request)
     {
-        $email = $request['email'];
-        $password =$request['password'];
+        $this->validate($request,[
+            'email'=>'required',
+            'password'=>'required',
+
+        ]);
+
+       if(Auth::attempt(['email'=>$request['email'],'password'=>$request['password']])){
+           return redirect()->route('dashboard');
+       };
+        return redirect()->back();
+
     }
 
     public function getDashboard()
