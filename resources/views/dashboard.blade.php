@@ -2,36 +2,40 @@
 
 @section('contenu')
     <section class="row new-post">
-        <div class="col-md-6 md-offset-3">
+        <div class="col-md-6 col-md-offset-3">
+            @include('includes.message_block')
             <header>
                 <h3>Que voulez vous dire ?</h3>
-                <form action="">
+                <form action="{{route('creation.post')}}" method="post">
                     <div class="form-group">
                         <textarea name="nouveau-post" id="nouveau-post" cols="30" rows="10" class="form-control"></textarea>
                     </div>
                     <button type="submit" class="btn btn-default">Créer</button>
+                    <input type="hidden" name="_token" value="{{Session::token()}}">
                 </form>
             </header>
         </div>
     </section>
-
     <section class="row posts">
-        <div class="col-md-6 col-md-3-offset">
+        <div class="col-md-6 col-md-offset-3">
             <header>
-                <h3>BLGLERBEB</h3>
-                <article class="post">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, consequatur deleniti dicta distinctio, dolor eius enim incidunt ipsam laborum minus rem repudiandae rerum sequi tempore totam unde vel vitae voluptates.
-                    </p>
-                    <div class="info">
-                        Posté par Mama le 15 du 33
-                    </div>
-                    <div class="interaction">
-                        <a href="">Like</a> |
-                        <a href="">Dislike</a>
-                        <a href="">Edit</a>
-                        <a href="">Delete</a>
-                    </div>
-                </article>
+                <h3>Les posts</h3>
+                @foreach($posts as $post)
+                    <article class="post">
+                       <p>{{$post->texte}}</p>
+                        <div class="info">
+                            Posté par {{$post->utilisateur->nom}} le {{$post->created_at}}
+                        </div>
+                        <div class="interaction">
+                            <a href="">Like</a> |
+                            <a href="">Dislike</a>
+                            <a href="">Edit</a>
+                            <a href="{{route('post.supprimer',['post_id'=>$post->id])}}">supprimer</a>
+                        </div>
+                    </article>
+                 @endforeach
+
+
             </header>
         </div>
     </section>

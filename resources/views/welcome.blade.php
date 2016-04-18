@@ -7,11 +7,7 @@
 @section('contenu')
     <div class="row">
         <div class="col-md-6">
-            @if($errors->has())
-                @foreach ($errors->all() as $error)
-                    <section class="alert alert-danger ">{{ $error }}</section>
-                @endforeach
-            @endif
+            @include('includes.message_block')
             <h3>Inscription</h3>
             <form action="{{route('inscription')}}" method="post">
                 <div class="form-group {{$errors->has('email') ? 'has-error' :''}}">

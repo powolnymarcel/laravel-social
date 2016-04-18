@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Utilisateur extends Model implements Authenticatable
 {
     use \Illuminate\Auth\Authenticatable;
-    
+    public function posts(){
+        return $this->hasMany('App\Post');
+    }
 }

@@ -27,11 +27,18 @@ Route::post('/connexion',[
 
 
 Route::group(['middleware' => 'auth'], function () {
-
-
     Route::get('/dashboard',[
-        'uses'=>'UtilisateurController@getDashboard',
+        'uses'=>'PostController@getDashboard',
         'as'=>'dashboard'
+    ]);
+
+    Route::post('/creationpost',[
+        'uses'=>'PostController@postCreationPost',
+        'as'=>'creation.post'
+    ]);
+    Route::get('/supprimer-post/{post_id}',[
+        'uses'=>'PostController@getSupprimerPost',
+        'as'=>'post.supprimer'
     ]);
 
 

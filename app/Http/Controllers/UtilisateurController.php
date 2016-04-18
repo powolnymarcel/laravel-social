@@ -51,10 +51,10 @@ class UtilisateurController extends Controller
 
     }
 
-    public function getDashboard()
-    {
-        return view('dashboard');
-    }
+  public function getDeconnexion()
+  {
+      
+  }
 
 
 

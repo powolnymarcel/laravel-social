@@ -77,3 +77,37 @@ header nav a:hover {
     width: 50%;
     text-align: center;
 }
+
+.nouveau-post{
+    padding:16px 0;
+    border-bottom: 1px solid #ccc;
+}
+.nouveau-post header, .posts header{
+    margin-bottom: 20px;
+}
+
+.possts, .post{
+    padding-left:10px;
+    border-left:3px solid #a21b24;
+    margin-bottom:30px;
+}
+.posts .post .info{
+    color: #aaa;
+    font-style: italic;
+}
+
+
+.success,.error{
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
