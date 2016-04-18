@@ -18,6 +18,11 @@
                 <li>                <a href="#">A propos</a></li>
                 <li>                <a href="#">Contact </a></li>
             </ul>
+            @if (Auth::user())
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{route('deconnexion')}}">Deconnexion</a></li>
+                </ul>
+            @endif
 
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->

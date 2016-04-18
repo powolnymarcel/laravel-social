@@ -23,6 +23,10 @@ Route::post('/connexion',[
     'uses'=>'UtilisateurController@postConnexion',
     'as'=>'connexion'
 ]);
+Route::get('/deconnexion',[
+    'uses'=>'UtilisateurController@getDeconnexion',
+    'as'=>'deconnexion'
+]);
 
 
 

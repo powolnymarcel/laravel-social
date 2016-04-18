@@ -51,9 +51,15 @@ class UtilisateurController extends Controller
 
     }
 
+    
+    
+    
+    
   public function getDeconnexion()
   {
-      
+      Auth::logout();
+      return redirect()->route('accueil');
+
   }
 
 
