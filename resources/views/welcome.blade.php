@@ -7,15 +7,20 @@
 @section('contenu')
     <div class="row">
         <div class="col-md-6">
+            @if($errors->has())
+                @foreach ($errors->all() as $error)
+                    <section class="alert alert-danger ">{{ $error }}</section>
+                @endforeach
+            @endif
             <h3>Inscription</h3>
-            <form action="" method="post">
+            <form action="{{route('inscription')}}" method="post">
                 <div class="form-group">
                     <label for="email">Votre email</label>
-                    <input type="email" name="email" id="email" class="form-control">
+                    <input type="email" name="email" id="email" value="{{Request::old('email')}}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="nom">Votre Nom</label>
-                    <input type="text" name="nom" id="nom" class="form-control">
+                    <input type="text" name="nom" id="nom" value="{{Request::old('nom')}}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="password">Votre mot de passe</label>

@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/inscription',[
+    'uses'=>'UtilisateurController@postInscription',
+    'as'=>'inscription'
+]);
+
+
+Route::get('/dashboard',[
+    'uses'=>'UtilisateurController@getDashboard',
+    'as'=>'dashboard'
+]);
+
