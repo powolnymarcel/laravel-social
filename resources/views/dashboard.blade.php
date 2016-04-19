@@ -33,7 +33,7 @@
                         @if (Auth::user()==$post->utilisateur)
 
                                     <a href="" data-toggle="modal" data-target="#modal-edit" class="editer">Edit</a> |
-                                    <a href="{{route('post.supprimer',['post_id'=>$post->id])}}">supprimer</a>
+                                    <a href="{{route('post.supprimer',['postid'=>$post->id])}}">supprimer</a>
                             @endif
 
                         </div>

@@ -40,10 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
         'uses'=>'PostController@postCreationPost',
         'as'=>'creation.post'
     ]);
-    Route::get('/supprimer-post/{post_id}',[
-        'uses'=>'PostController@getSupprimerPost',
-        'as'=>'post.supprimer'
-    ]);
+
 
     Route::post('/editer',[
         'uses'=>'PostController@postEditerPost'
@@ -51,7 +48,10 @@ Route::group(['middleware' => 'auth'], function () {
     ])->name('editer');
 
 
-
+    Route::get('/supprimer-post/{postid}',[
+        'uses'=>'PostController@getSupprimerPost',
+        'as'=>'post.supprimer'
+    ]);
 
 
 

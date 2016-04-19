@@ -1,8 +1,13 @@
 var postId=0;
+var postBodyElement= null;
+
+
 //permet de lancer la modale pour l'edit
 $('.post').find('.interaction').find('.editer').on('click',function(event){
     event.preventDefault();
-    var postTexte=event.target.parentNode.parentNode.childNodes[1].textContent;
+     postBodyElement= event.target.parentNode.parentNode.childNodes[1];
+
+    var postTexte=postBodyElement.textContent;
      postId=event.target.parentNode.parentNode.dataset['postid'];
 
 $('#texte').val(postTexte)
@@ -16,6 +21,8 @@ $('#enregister').on('click',function(){
         data:{texte: $('#texte').val(),postId:postId,_token:token }
     })
         .done(function(msg){
-            console.log(JSON.stringify(msg))
+            $(postBodyElement).text(msg['nouveau_texte'])
+            $('#modal-edit').modal('hide')
+
         })
 });

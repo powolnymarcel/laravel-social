@@ -32,10 +32,10 @@ class PostController extends Controller
         return view('dashboard',['posts'=>$posts]);
     }
 
-    public function getSupprimerPost($post_id)
+    public function getSupprimerPost($postid)
     {
-        $post=Post::where('id',$post_id)->first();
-        if (Auth::user() != $post->user ){
+        $post=Post::where('id',$postid)->first();
+        if (Auth::user() != $post->utilisateur ){
             return redirect()->back();
         }
         $post->delete();
@@ -51,7 +51,7 @@ class PostController extends Controller
         $post=Post::find($request['postId']);
         $post->texte = $request['texte'];
         $post->update();
-        return response()->json(['message'=>'Post édité !'],200);
+        return response()->json(['nouveau_texte'=>$post->texte],200);
     }
 
 
