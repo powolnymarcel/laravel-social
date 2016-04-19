@@ -5,8 +5,7 @@
     <title> @yield('titre')</title>
     <link rel="stylesheet" href="{{ URL::to('src/css/main.css') }}">
     <link rel="stylesheet" href="{{ URL::to('src/lib/bootstrap/dist/css/bootstrap.min.css') }}">
-    <script src="{{ URL::to('src/lib/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ URL::to('src/lib/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
     @yield('styles')
 </head>
 <body>
@@ -14,6 +13,11 @@
 <section class="container">
     @include('includes.navigation')
     @yield('contenu')
+
 </section>
+<script src="{{ URL::to('src/lib/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ URL::to('src/lib/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+@yield('scripts')
+
 </body>
 </html>
