@@ -42,6 +42,46 @@ class PostController extends Controller
         return redirect()->route('dashboard')->with(['message'=>'Message supprimé avec succes.']);
     }
 
+    public function postEditerPost(Request $request)
+    {
+        $this->validate($request,[
+            'texte'=>'required'
+        ]);
+
+        $post=Post::find($request['postId']);
+        $post->texte = $request['texte'];
+        $post->update();
+        return response()->json(['message'=>'Post édité !'],200);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

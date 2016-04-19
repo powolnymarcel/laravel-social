@@ -45,7 +45,19 @@ Route::group(['middleware' => 'auth'], function () {
         'as'=>'post.supprimer'
     ]);
 
-    Route::post('/editer',function(\Illuminate\Http\Request $request){
-            return response()->json(['message'=>$request['postId']]);
-    })->name('editer');
+    Route::post('/editer',[
+        'uses'=>'PostController@postEditerPost'
+
+    ])->name('editer');
+
+
+
+
+
+
+
+
+
+
+
 });

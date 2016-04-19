@@ -13,9 +13,9 @@ $('#enregister').on('click',function(){
     $.ajax({
         method:'POST',
         url:url,
-        data:{texte: $('#texte').val(),postID:postId,_token:token }
+        data:{texte: $('#texte').val(),postId:postId,_token:token }
     })
         .done(function(msg){
-            console.log(msg['message'])
+            console.log(JSON.stringify(msg))
         })
 });
