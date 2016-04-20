@@ -49,6 +49,9 @@ class PostController extends Controller
         ]);
 
         $post=Post::find($request['postId']);
+        if (Auth::user() != $post->utilisateur ){
+            return redirect()->back();
+        }
         $post->texte = $request['texte'];
         $post->update();
         return response()->json(['nouveau_texte'=>$post->texte],200);
