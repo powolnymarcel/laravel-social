@@ -30,7 +30,8 @@
         <section class="row new-post">
             <div class="col-md-6 col-md-offset-3">
                 <!--     On fetch l'image via une route, cette route actionnera un Ctrl qui renverra le bon fichier  -->
-                <img src="{{ route('compte.image', ['filename' => $utilisateur->nom . '-' . $utilisateur->id . '.jpg']) }}" alt="" class="img-responsive">
+                <!--    Etant donné que le dossier storage est protége on a besoin d'une route spéciale pour recuperer le src   -->
+                <img src="{{ route('compte.image', ['nomfichier' => $utilisateur->nom . '-' . $utilisateur->id . '.jpg']) }}" alt="" class="img-responsive">
             </div>
         </section>
     @endif

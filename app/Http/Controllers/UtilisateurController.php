@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Utilisateur;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests;
 
 class UtilisateurController extends Controller
@@ -68,9 +71,29 @@ public function getCompte()
 }
 
 
-public function postMettreAjourCompte(){
-    
-}
+public function postMettreAjourCompte(Request $request)
+    {
+        $this->validate($request,[
+            'nom'=>'required|max:120'
+        ]);
+        $utilisateur = Auth::user();
+        $utilisateur->nom=$request['nom'];
+        $utilisateur->update();
 
+        // file('image') correspond au name dans le form
+        $fichier = $request->file('image');
+        //L'image aura comme nom : exemple -> jean-3.jpg
+        $nomFichier= $request['nom'].'-'.$utilisateur->id.'.jpg';
+       if ($fichier){
+           Storage::disk('local')->put($nomFichier,File::get($fichier));
+       }
+        return redirect('compte');
 
+    }
+
+public function getUtilisateurImage($nomfichier){
+
+    $fichier= Storage::disk('local')->get($nomfichier);
+    return new Response($fichier,200);
+    }
 }

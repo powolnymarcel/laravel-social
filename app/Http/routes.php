@@ -38,7 +38,10 @@ Route::post('/mise-a-jour-compte',[
     'as'=>'compte.sauvegarder'
 ]);
 
-
+Route::get('/image-utilisateur/{nomfichier}',[
+    'uses'=>'UtilisateurController@getUtilisateurImage',
+    'as'=>'compte.image'
+]);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard',[

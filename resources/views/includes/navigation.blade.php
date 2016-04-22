@@ -12,11 +12,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home     </a></li>
-                <li>                <a href="#">Accueil </a></li>
-                <li>                <a href="#">Blog    </a></li>
-                <li>                <a href="#">A propos</a></li>
-                <li>                <a href="#">Contact </a></li>
             </ul>
             @if (Auth::user())
                 <ul class="nav navbar-nav navbar-right">
