@@ -28,6 +28,16 @@ Route::get('/deconnexion',[
     'as'=>'deconnexion'
 ]);
 
+Route::get('/compte',[
+    'uses'=>'UtilisateurController@getCompte',
+    'as'=>'compte'
+]);
+
+Route::post('/mise-a-jour-compte',[
+    'uses'=>'UtilisateurController@postMettreAjourCompte',
+    'as'=>'compte.sauvegarder'
+]);
+
 
 
 Route::group(['middleware' => 'auth'], function () {

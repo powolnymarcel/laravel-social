@@ -62,10 +62,15 @@ class UtilisateurController extends Controller
 
   }
 
+public function getCompte()
+{
+    return view('compte',['utilisateur'=>Auth::user()]);
+}
 
 
-
-
+public function postMettreAjourCompte(){
+    
+}
 
 
 }
