@@ -17,7 +17,8 @@
 </section>
 <script src="{{ URL::to('src/lib/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ URL::to('src/lib/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-@yield('scripts')
+<script src="{{ URL::to('src/js/app.js') }}"></script>
+
 
 </body>
 </html>

@@ -69,11 +69,8 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 @endsection
-@section('scripts')
-    <script src="{{ URL::to('src/js/app.js') }}"></script>
     <script>
         var token='{{Session::token()}}';
         var urlEditer= '{{route('editer')}}';
         var urlLike= '{{route('like')}}';
     </script>
-@endsection

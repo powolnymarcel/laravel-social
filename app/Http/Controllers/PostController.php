@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
 use App\Post;
 use App\Utilisateur;
 use Illuminate\Http\Request;
@@ -72,10 +73,39 @@ public function postLikePost(Request $request){
         return null;
     }
     $utilisateur=Auth::user();
-    $like=$utilisateur->likes()->where('post_id',$post_id->first());
+    $like=$utilisateur->likes()->where('post_id',$post_id)->first();
+    //Si il n'y a pas de like ou dislike,alors cela veut dire que l'user n'a pris aucunes actions sur le post
+    //Si il y une action, je veux verif si je like ou dislike
     if ($like){
+        //On accède à la propriete de like pour voir sa valeur, si la valeur retournée est TRUE alors on like deja, si FALSE alors on dislike
+        $aDejaLiker= $like->like;
+        $miseAjour=true;
+        //Si on like déjà le post alors on veut annuler le like si on clique sur le btn like
+        //Si on like déjà et on clique sur dislike on veut mettre la valeur de like à FALSE
+
+        //Si "$aDejaLiker" (entrée qui se trouve en BDD) est égal à ce que la requete envoie ça veut dire que on veut annuler son action
+        if($aDejaLiker === clickSurLike){
+            $like->delete();
+            return null;
+        }
 
     }
+    else{
+        //
+        $like=new Like();
+    }
+    //Dans tous les autres cas on veut attribuer une valeur à like qui se trouve en BDD
+    $like->like = $clickSurLike;
+    $like->utilisateur_id= $utilisateur->id;
+    $like->post_id=$post_id;
+    //Si on avait déjçà une entrée alors on update
+    if ($miseAjour){
+        $like->update();
+    }
+    else{
+        $like->save();
+    }
+    return null;
 
 
 }

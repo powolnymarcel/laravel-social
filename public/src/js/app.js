@@ -28,7 +28,7 @@ $('#enregister').on('click',function(){
 });
 
 $('.like').on('click',function(e){
-    postId=event.target.parentNode.parentNode.dataset['postid'];
+    postId=e.target.parentNode.parentNode.dataset['postid'];
     e.preventDefault();
             // Si la cible.elementPrecedentSimilaire
             //Si il y a un element précedent alors user a click sur Dislike
@@ -36,11 +36,11 @@ $('.like').on('click',function(e){
     var clickSurLike=e.target.previousElementSibling == null ;
 
     $.ajax({
-        metho:'POST',
+        method:'POST',
         url:urlLike,
         //Il y aura que une seule route avec param si c'est like ou dislike
         data:{
-            clickSurLike:clickSurLike,postId:postId, token:token
+            clickSurLike:clickSurLike,postId:postId, _token:token
         }
 
     }).done(function(){
