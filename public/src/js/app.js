@@ -43,8 +43,13 @@ $('.like').on('click',function(e){
             clickSurLike:clickSurLike,postId:postId, _token:token
         }
 
-    }).done(function(){
-        //Changer la page
-    })
+    }).done(function() {
+        e.target.innerText = clickSurLike ? e.target.innerText == 'J\'aime' ? 'Vous aimez ce post' : 'J\'aime' : e.target.innerText == 'J\'aime pas' ? 'Vous n\'aimez pas ce post' : 'J\'aime pas';
+        if (clickSurLike) {
+            e.target.nextElementSibling.innerText = 'J\'aime pas';
+        } else {
+            e.target.previousElementSibling.innerText = 'J\'aime';
+        }
+    });
 
 });

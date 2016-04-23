@@ -8,7 +8,8 @@
                 <h3>Que voulez vous dire ?</h3>
                 <form action="{{route('creation.post')}}" method="post">
                     <div class="form-group">
-                        <textarea name="nouveau-post" id="nouveau-post" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="nouveau-post" id="nouveau-post" cols="30" rows="10"
+                                  class="form-control"></textarea>
                     </div>
                     <button type="submit" class="btn btn-default">Créer</button>
                     <input type="hidden" name="_token" value="{{Session::token()}}">
@@ -22,23 +23,23 @@
                 <h3>Les posts</h3>
                 @foreach($posts as $post)
                     <article class="post" data-postid="{{$post->id}}">
-                       <p>{{$post->texte}}</p>
+                        <p>{{$post->texte}}</p>
                         <div class="info">
                             Posté par {{$post->utilisateur->nom}} le {{$post->created_at}}
                         </div>
                         <div class="interaction">
-                            <a href="" class="like">Like</a> |
-                            <a href="" class="like">Dislike  </a>@if (Auth::user()==$post->utilisateur)|@endif
+                            <a href="" class="like">{{Auth::user()->likes()->where('post_id',$post->id)->first() ? Auth::user()->likes()->where('post_id',$post->id)->first()->like == 1 ? 'Vous aimez ce post' : 'J\'aime' :'J\'aime' }}</a> |
+                            <a href="" class="like">{{Auth::user()->likes()->where('post_id',$post->id)->first() ? Auth::user()->likes()->where('post_id',$post->id)->first()->like == 0 ? 'Vous n\'aimez pas ce post' : 'J\'aime pas' :'J\'aime pas' }} </a>@if (Auth::user()==$post->utilisateur)|@endif
 
-                        @if (Auth::user()==$post->utilisateur)
+                            @if (Auth::user()==$post->utilisateur)
 
-                                    <a href="" data-toggle="modal" data-target="#modal-edit" class="editer">Edit</a> |
-                                    <a href="{{route('post.supprimer',['postid'=>$post->id])}}">supprimer</a>
+                                <a href="" data-toggle="modal" data-target="#modal-edit" class="editer">Edit</a> |
+                                <a href="{{route('post.supprimer',['postid'=>$post->id])}}">supprimer</a>
                             @endif
 
                         </div>
                     </article>
-                 @endforeach
+                @endforeach
 
 
             </header>
@@ -50,15 +51,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Editer le post</h4>
                 </div>
                 <div class="modal-body">
                     <form action="" method="post">
-                            <div class="form-group">
-                                <label for="texte">Editer</label>
-                                <textarea class="form-control" name="texte" id="texte" cols="30" rows="5"></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label for="texte">Editer</label>
+                            <textarea class="form-control" name="texte" id="texte" cols="30" rows="5"></textarea>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -69,8 +71,8 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 @endsection
-    <script>
-        var token='{{Session::token()}}';
-        var urlEditer= '{{route('editer')}}';
-        var urlLike= '{{route('like')}}';
-    </script>
+<script>
+    var token = '{{Session::token()}}';
+    var urlEditer = '{{route('editer')}}';
+    var urlLike = '{{route('like')}}';
+</script>
