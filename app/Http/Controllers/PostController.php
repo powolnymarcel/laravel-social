@@ -84,7 +84,7 @@ public function postLikePost(Request $request){
         //Si on like déjà et on clique sur dislike on veut mettre la valeur de like à FALSE
 
         //Si "$aDejaLiker" (entrée qui se trouve en BDD) est égal à ce que la requete envoie ça veut dire que on veut annuler son action
-        if($aDejaLiker === clickSurLike){
+        if($aDejaLiker === $clickSurLike){
             $like->delete();
             return null;
         }

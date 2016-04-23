@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74089f40-8cfa-4320-93cb-a6f017552946" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/src/js/app.js" afterPath="$PROJECT_DIR$/public/src/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" />
     </list>
     <ignored path="laravel-social.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +32,8 @@
       <file leaf-file-name="PostController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PostController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="100" column="50" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
+            <state relative-caret-position="348">
+              <caret line="86" column="40" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="40" />
               <folding>
                 <element signature="e#40#53#0#PHP" expanded="true" />
               </folding>
@@ -558,12 +554,12 @@
       <workItem from="1461088634966" duration="43000" />
       <workItem from="1461187109269" duration="629000" />
       <workItem from="1461232273169" duration="615000" />
-      <workItem from="1461349248019" duration="9739000" />
+      <workItem from="1461349248019" duration="9864000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32126000" />
+    <option name="totallyTimeSpent" value="32251000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1004" extended-state="6" />
@@ -1008,8 +1004,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PostController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="100" column="50" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
+        <state relative-caret-position="348">
+          <caret line="86" column="40" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="40" />
           <folding>
             <element signature="e#40#53#0#PHP" expanded="true" />
           </folding>
