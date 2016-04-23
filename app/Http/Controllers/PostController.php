@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Utilisateur;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
@@ -59,7 +60,25 @@ class PostController extends Controller
 
 
 
+public function postLikePost(Request $request){
+    $post_id = $request['postId'];
+    //Va recevoir un string donc on converti en Boollean
+    //$clickSurLike= $request['clickSurLike'] === 'true' ? true : false;
+    $clickSurLike= $request['clickSurLike'] === 'true';
 
+    $miseAjour=false;
+    $post=Post::find($post_id);
+    if (!$post){
+        return null;
+    }
+    $utilisateur=Auth::user();
+    $like=$utilisateur->likes()->where('post_id',$post_id->first());
+    if ($like){
+
+    }
+
+
+}
 
 
 

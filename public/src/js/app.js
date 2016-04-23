@@ -17,7 +17,7 @@ $('#texte').val(postTexte)
 $('#enregister').on('click',function(){
     $.ajax({
         method:'POST',
-        url:url,
+        url:urlEditer,
         data:{texte: $('#texte').val(),postId:postId,_token:token }
     })
         .done(function(msg){
@@ -25,4 +25,26 @@ $('#enregister').on('click',function(){
             $('#modal-edit').modal('hide')
 
         })
+});
+
+$('.like').on('click',function(e){
+    postId=event.target.parentNode.parentNode.dataset['postid'];
+    e.preventDefault();
+            // Si la cible.elementPrecedentSimilaire
+            //Si il y a un element précedent alors user a click sur Dislike
+            //Si il y en a pas alors il a cliqué sur like
+    var clickSurLike=e.target.previousElementSibling == null ;
+
+    $.ajax({
+        metho:'POST',
+        url:urlLike,
+        //Il y aura que une seule route avec param si c'est like ou dislike
+        data:{
+            clickSurLike:clickSurLike,postId:postId, token:token
+        }
+
+    }).done(function(){
+        //Changer la page
+    })
+
 });

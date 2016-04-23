@@ -27,8 +27,8 @@
                             Posté par {{$post->utilisateur->nom}} le {{$post->created_at}}
                         </div>
                         <div class="interaction">
-                            <a href="">Like</a> |
-                            <a href="">Dislike  </a>@if (Auth::user()==$post->utilisateur)|@endif
+                            <a href="" class="like">Like</a> |
+                            <a href="" class="like">Dislike  </a>@if (Auth::user()==$post->utilisateur)|@endif
 
                         @if (Auth::user()==$post->utilisateur)
 
@@ -73,6 +73,7 @@
     <script src="{{ URL::to('src/js/app.js') }}"></script>
     <script>
         var token='{{Session::token()}}';
-        var url= '{{route('editer')}}';
+        var urlEditer= '{{route('editer')}}';
+        var urlLike= '{{route('like')}}';
     </script>
 @endsection
